@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "simbol=square": { "model": "eldritch:ritual_simbol_square" },
+        "simbol=one": { "model": "eldritch:ritual_simbol_one" },
+        "simbol=two": { "model": "eldritch:ritual_simbol_two" },
+        "simbol=three": { "model": "eldritch:ritual_simbol_three" },
+        "simbol=four": { "model": "eldritch:ritual_simbol_four" },
+        "simbol=horizontal": { "model": "eldritch:ritual_simbol_horizontal" },
+        "simbol=vertical": { "model": "eldritch:ritual_simbol_vertical" },
+        "simbol=bi_horizontal": { "model": "eldritch:ritual_simbol_bi_horizontal" },
+        "simbol=bi_vertical": { "model": "eldritch:ritual_simbol_bi_vertical" },
+        "simbol=rectangle": { "model": "eldritch:ritual_simbol_rectangle" },
+        "simbol=triangle": { "model": "eldritch:ritual_simbol_triangle" },
+        "simbol=corners": { "model": "eldritch:ritual_simbol_corners" },
+        "simbol=u": { "model": "eldritch:ritual_simbol_u" },
+        "simbol=n": { "model": "eldritch:ritual_simbol_n" },
+        "simbol=forward": { "model": "eldritch:ritual_simbol_forward" },
+        "simbol=backward": { "model": "eldritch:ritual_simbol_backward" }
+    }
+}

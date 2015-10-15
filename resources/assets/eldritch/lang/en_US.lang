@@ -1,0 +1,73 @@
+#Book Index Name:
+book.index.name=Eldritch Knowledge
+
+#Book Intro:
+book.intro.name=Introduction
+book.intro.text.1=This book is your guide, your companion, and by the end, your sole friend. It will help guide you through an unknown and strange world; or rather, a world there and in your face, but forever hidden. The world of the Eldritch.
+book.intro.text.2=They are unknowable gods with unfathomable power. If you so choose you may side with one, and it will lend you a mere fraction of its abilities; this book will instruct and guide you on how to achieve this. Be warned, you will make powerful enemies if you choose to precede.
+
+#Book Simbols:
+book.simbols.name=Simbols
+book.simbols.text=Also could be called "runes," but you'd be WRONG. Simbols are the base "rune" to be used in the ritual circle. Each simbol has a different crafting recipe, as outlined in the next 16 pages.
+
+#Book Rituals How to:
+book.howto.name=Ritual How-To
+book.howto.text.1=You first will need a ritual circle. This is made by placing a 5 by 5 border of simbol putty. Then, in the middle put a simbol putty core. Simbol putty is made by putting any dye and clay in the crafting grid, while the core is made with four simbol putty in a square in the grid.
+book.howto.text.2=Before you activate a ritual you first want to make sure you have all the required items and blocks in your inventory. Once your sure your ready, right click the middle of the ritual square with the ritual stick. To make the ritual stick put a stick and a putty core in the grid.
+
+#Book Rituals:
+book.rituals.name=Rituals
+book.rituals.needMore=Need More Knowledge
+book.rituals.recipe=Ritual Format:
+#Minor Knowledge:
+book.rituals.base.knowledge=Minor Knowledge
+book.rituals.base.knowledge.1=This ritual will let you dive into the world of the Eldritch. It will add other rituals and more knowledge to this book. The only thing need to perform this easy ritual (besides the simbols) is this book.
+book.rituals.base.knowledge.2=Be warned that venturing too far into the world of the eldritch can be detremental to one's own health. You have been warned.
+book.rituals.base.knowledge.success=You feel yourself becoming, just slightly, more versed.
+#Sunny:
+book.rituals.one.sunny=The Sun Call
+book.rituals.one.sunny.1=Let the sun be yours to call; but not yours to command, not yet. This ritual will clear away rain and make the sun rise up into the heavens.
+book.rituals.one.sunny.2=An extra thing needed for this ritual is a bottle of blood, the controller of the sun does need to be feed now and again.
+book.rituals.one.sunny.success=The sun controller heeds your request, and decides to comply.
+
+book.lore.damien.name=Damien's Lore
+book.lore.thorn.name=Thorn's Lore
+book.lore.risk.name=Risk's Lore
+book.lore.enoon.name=$!~!'s Lore
+
+#Eldritch God Info:
+god.damien.name=Damien
+god.thorn.name=Thorn
+god.risk.name=Risk
+god.enoon.name=$!~!
+
+#Eldritch Items:
+item.simbol_putty.name=Simbol Putty
+item.simbol_putty_center.name=Simbol Putty Core
+item.ritual_stick.name=Eldritch Ritual Stick
+item.knowledge_book.name=The Book of Eldritch Knowledge
+item.bottle_blood.name=Bottle of Blood
+
+#Eldritch Simbols:
+item.simbol_rune.square.name=Square Simbol
+item.simbol_rune.one.name=One Simbol
+item.simbol_rune.two.name=Two Simbol
+item.simbol_rune.three.name=Three Simbol
+item.simbol_rune.four.name=Four Simbol
+item.simbol_rune.horizontal.name=Horizontal Simbol
+item.simbol_rune.vertical.name=Vertical Simbol
+item.simbol_rune.bi_horizontal.name=Bi-Horizontal Simbol
+item.simbol_rune.bi_vertical.name=Bi-Vertical Simbol
+item.simbol_rune.rectangle.name=Rectangle Simbol
+item.simbol_rune.triangle.name=Triangle Simbol
+item.simbol_rune.corners.name=Corners Simbol
+item.simbol_rune.u.name="U" Simbol
+item.simbol_rune.n.name="N" Simbol
+item.simbol_rune.forward.name=Forward Simbol
+item.simbol_rune.backward.name=Backward Simbol
+
+#Eldritch God Simbols:
+item.simbol_god.damien.name=Damien's Simbol
+item.simbol_god.thorn.name=Thorn's Simbol
+item.simbol_god.risk.name=Risk's Simbol
+item.simbol_god.enoon.name=$!~!'s Simbol

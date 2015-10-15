@@ -1,0 +1,14 @@
+{
+    "ritual.complete": {
+      "category": "block",
+      "sounds": [
+        "ritual/complete"
+      ]
+    },
+    "ritual.failure": {
+      "category": "block",
+      "sounds": [
+        "ritual/failure"
+      ]
+    }
+}

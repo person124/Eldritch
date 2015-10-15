@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "god=damien": { "model": "eldritch:ritual_simbol_god_damien" },
+        "god=thorn": { "model": "eldritch:ritual_simbol_god_thorn" },
+        "god=risk": { "model": "eldritch:ritual_simbol_god_risk" },
+        "god=enoon": { "model": "eldritch:ritual_simbol_god_enoon" }
+    }
+}

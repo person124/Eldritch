@@ -1,0 +1,6 @@
+{
+    "parent": "eldritch:base/ritual",
+    "textures": {
+        "wool": "eldritch:blocks/ritual_simbol_bi_vertical"
+    }
+}
