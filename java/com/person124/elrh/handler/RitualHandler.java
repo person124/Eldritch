@@ -3,13 +3,12 @@ package com.person124.elrh.handler;
 import com.person124.elrh.Eldritch;
 import com.person124.elrh.ElrhBlocks;
 import com.person124.elrh.enums.EnumRituals;
-import com.sun.imageio.plugins.common.I18N;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 
 public class RitualHandler {
@@ -30,7 +29,7 @@ public class RitualHandler {
 	private void success(BlockPos pos, EntityPlayer player) {
 		World world = player.worldObj;
 
-		world.playSoundAtEntity(player, "eldritch:ritual.complete", 1.0f, 1.0f);
+		world.playSoundAtEntity(player, Eldritch.MODID + ":ritual.complete", 1.0f, 1.0f);
 		world.playAuxSFX(2003, new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), 0);
 
 		for (int xp = 1; xp >= -1; xp--) {
@@ -49,7 +48,7 @@ public class RitualHandler {
 	private void failure(BlockPos pos, EntityPlayer player, EnumRituals.Importance impor) {
 		World world = player.worldObj;
 
-		world.playSoundAtEntity(player, "eldritch:ritual.failure", 1.0f, 1.0f);
+		world.playSoundAtEntity(player, Eldritch.MODID + ":ritual.failure", 1.0f, 1.0f);
 
 		switch (impor) {
 			case SMALL:
@@ -65,8 +64,7 @@ public class RitualHandler {
 	}
 
 	private void printSuccess(EntityPlayer player, EnumRituals rit) {
-		String s = I18N.getString("book.rituals." + rit.getReference() + ".success");
-		if (s != null) player.addChatMessage(new ChatComponentText(s));
+		player.addChatMessage(new ChatComponentTranslation("book.rituals." + rit.getReference() + ".success"));
 	}
 
 	public static void notARitual(BlockPos pos, EntityPlayer player) {

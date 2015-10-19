@@ -10,7 +10,7 @@ import com.person124.elrh.enums.EnumRituals;
 
 public class EldritchWorldSaveData extends WorldSavedData {
 
-	public static final byte VERSION = 5;
+	public static final byte VERSION = 6;
 
 	private byte version;
 	private HashMap<Byte, String> recipes;

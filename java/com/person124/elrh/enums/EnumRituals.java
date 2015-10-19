@@ -1,18 +1,20 @@
 package com.person124.elrh.enums;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
-
 import com.person124.elrh.Eldritch;
 import com.person124.elrh.handler.RitualHandler;
 import com.person124.elrh.handler.ritual.HandlerRitualBase;
 import com.person124.elrh.handler.ritual.HandlerRitualKnowledge;
+import com.person124.elrh.handler.ritual.HandlerRitualMoony;
 import com.person124.elrh.handler.ritual.HandlerRitualSunny;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 
 public enum EnumRituals {
 
-	KNOWLEDGE(0, 2, "base.knowledge", HandlerRitualKnowledge.class, Importance.SMALL, KnowRequirement.NONE),
-	SUNNY(1, 3, "one.sunny", HandlerRitualSunny.class, Importance.SMALL, KnowRequirement.ONE);
+	KNOWLEDGE(0, 2, "knowledge", HandlerRitualKnowledge.class, Importance.SMALL, KnowRequirement.NONE),
+	SUNNY(1, 3, "sunny", HandlerRitualSunny.class, Importance.SMALL, KnowRequirement.ONE),
+	MOONY(2, 3, "moony", HandlerRitualMoony.class, Importance.SMALL, KnowRequirement.ONE);
 
 	public static final RitualHandler HANDLER = new RitualHandler();
 

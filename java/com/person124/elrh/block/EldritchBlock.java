@@ -1,15 +1,16 @@
 package com.person124.elrh.block;
 
+import com.person124.elrh.Eldritch;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 
 public class EldritchBlock extends Block {
 
 	public EldritchBlock(Material mat, String name) {
 		super(mat);
 		setUnlocalizedName(name);
-		setCreativeTab(CreativeTabs.tabTransport);
+		setCreativeTab(Eldritch.TAB);
 	}
 
 	public String getName() {

@@ -30,7 +30,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 		INTRODUCTION((byte) 1, 2),
 		SIMBOLS((byte) 2, 17),
 		HOW_TO_RITUAL((byte) 3, 2),
-		RITUALS((byte) 4),
+		RITUALS((byte) 4, KnowledgeBookPages.PAGE_COUNT),
 		ABOUT_RITUAL(3);
 
 		private final boolean NEED_CHANGE_BTN;
@@ -69,9 +69,9 @@ public class GuiKnowledgeBook extends GuiScreen {
 		}
 	}
 
-	private final ResourceLocation BOOK_TEXTURE = new ResourceLocation("eldritch:textures/gui/basic_book.png");
+	private final ResourceLocation BOOK_TEXTURE = new ResourceLocation(Eldritch.MODID + ":textures/gui/basic_book.png");
 	private final ResourceLocation CRAFTING_GRID = new ResourceLocation("textures/gui/container/crafting_table.png");
-	private final ResourceLocation RITUAL_GRID = new ResourceLocation("eldritch:textures/gui/ritual_crafting_grid.png");
+	private final ResourceLocation RITUAL_GRID = new ResourceLocation(Eldritch.MODID + ":textures/gui/ritual_crafting_grid.png");
 	private final int IMG_SIZE = 192, TEXT_IN_SIZE = 35, TEXT_DOWN_BASE = 17, TEXT_DOWN_EXTRA = 12, TEXT_WRAP = 120;
 	private final int COLOR = 0x81090a, HOVER_COLOR = 0xff0000;
 	private final EldritchPlayerData DATA;
@@ -135,7 +135,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 					drawLocalizedText("--------------------", i, COLOR);
 				} else if (KnowledgeBookPages.hasEnoughKnowledge(currentPage, i, DATA)) {
 					drawText("book.rituals." + KnowledgeBookPages.getRitString(currentPage, i), i, hover == i ? HOVER_COLOR : COLOR);
-				} else drawLocalizedText(" ??? - §kUNKNOWNS§r - ???", i, COLOR);
+				} else drawGalaticText(" youdontknowthetruth", i, COLOR);
 			}
 		} else if (page == Pages.ABOUT_RITUAL) {
 			drawTitle("book.rituals." + selectedRitual, w, h, COLOR);
@@ -259,14 +259,18 @@ public class GuiKnowledgeBook extends GuiScreen {
 	private void drawLocalizedText(String s, int rowNum, int color) {
 		fontRendererObj.drawSplitString(s, w + TEXT_IN_SIZE, h + TEXT_DOWN_BASE + TEXT_DOWN_EXTRA * rowNum, TEXT_WRAP, color);
 	}
+	
+	private void drawGalaticText(String s, int rowNum, int color) {
+		mc.standardGalacticFontRenderer.drawString(s, w + TEXT_IN_SIZE, h + TEXT_DOWN_BASE + TEXT_DOWN_EXTRA * rowNum, color);
+	}
 
 	private void drawSimbolRecipe(int wid, int hei, EnumSimbolType type) {
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		mc.getTextureManager().bindTexture(CRAFTING_GRID);
 		drawTexturedModalRect(wid, hei, 28, 15, 56, 56);
 
-		ResourceLocation putty = new ResourceLocation("eldritch:textures/items/simbol_putty.png");
-		ResourceLocation center = new ResourceLocation("eldritch:textures/items/simbol_putty_center.png");
+		ResourceLocation putty = new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_putty.png");
+		ResourceLocation center = new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_putty_center.png");
 
 		int i = 0;
 		for (String s : type.getRecipe()) {
@@ -282,7 +286,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 
 		mc.getTextureManager().bindTexture(CRAFTING_GRID);
 		drawTexturedModalRect(wid + 14, hei + 60, 118, 29, 28, 28);
-		mc.getTextureManager().bindTexture(new ResourceLocation("eldritch:textures/items/simbol_rune_" + type.getUnlocalizedName() + ".png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_rune_" + type.getUnlocalizedName() + ".png"));
 		drawModalRectWithCustomSizedTexture(wid + 20, hei + 66, 0, 0, 16, 16, 16, 16);
 	}
 
@@ -299,7 +303,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 		int x = 0, y = 0;
 		for (char c : cachedRecipes.get(id).toCharArray()) {
 			if (c != '-') {
-				mc.getTextureManager().bindTexture(new ResourceLocation("eldritch:textures/items/simbol_rune_" + EnumSimbolType.byChar(c).getUnlocalizedName() + ".png"));
+				mc.getTextureManager().bindTexture(new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_rune_" + EnumSimbolType.byChar(c).getUnlocalizedName() + ".png"));
 				drawModalRectWithCustomSizedTexture(wid + 16 + (16 * x), hei + 16 + (16 * y), 0, 0, 16, 16, 16, 16);
 			}
 

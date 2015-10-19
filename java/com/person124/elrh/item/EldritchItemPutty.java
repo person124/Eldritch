@@ -1,12 +1,12 @@
 package com.person124.elrh.item;
 
+import com.person124.elrh.block.EldritchBlock;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-
-import com.person124.elrh.block.EldritchBlock;
 
 public class EldritchItemPutty extends EldritchItem {
 

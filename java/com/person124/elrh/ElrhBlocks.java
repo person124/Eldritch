@@ -23,6 +23,7 @@ public class ElrhBlocks {
 	public static final EldritchBlock RITUAL_SIMBOL_GOD = new EldritchBlockRitualGods("ritual_simbol_god").setHardness(0.5f);
 
 	public static void init() {
+		//Set one
 		register(RITUAL_BORDER, false);
 
 		register(RITUAL_CENTER, false);

@@ -46,6 +46,7 @@ public class EldritchBlockRitualCenter extends EldritchBlockRitualBorder {
 					}
 				}
 
+				player.inventory.getCurrentItem().damageItem(1, player);
 				EnumRituals rit = Eldritch.worldData.matchRecipe(s);
 				if (rit != null) rit.execute(pos, player);
 				else RitualHandler.notARitual(pos, player);

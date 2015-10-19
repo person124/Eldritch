@@ -4,12 +4,13 @@ import com.person124.elrh.EldritchPlayerData;
 
 public class KnowledgeBookPages {
 
+	public static final byte PAGE_COUNT = 1;
 	private static Page[] pages;
 
 	static {
-		pages = new Page[1];
+		pages = new Page[PAGE_COUNT];
 
-		pages[0] = new Page(EnumRituals.KNOWLEDGE, null, EnumRituals.SUNNY);
+		pages[0] = new Page(EnumRituals.KNOWLEDGE, null, EnumRituals.SUNNY, EnumRituals.MOONY);
 	}
 
 	public static Page getPage(int i) {

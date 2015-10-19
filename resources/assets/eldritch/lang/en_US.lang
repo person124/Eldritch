@@ -1,3 +1,6 @@
+#Creative Tab Name:
+itemGroup.eldritch=Eldritch
+
 #Book Index Name:
 book.index.name=Eldritch Knowledge
 
@@ -20,15 +23,20 @@ book.rituals.name=Rituals
 book.rituals.needMore=Need More Knowledge
 book.rituals.recipe=Ritual Format:
 #Minor Knowledge:
-book.rituals.base.knowledge=Minor Knowledge
-book.rituals.base.knowledge.1=This ritual will let you dive into the world of the Eldritch. It will add other rituals and more knowledge to this book. The only thing need to perform this easy ritual (besides the simbols) is this book.
-book.rituals.base.knowledge.2=Be warned that venturing too far into the world of the eldritch can be detremental to one's own health. You have been warned.
-book.rituals.base.knowledge.success=You feel yourself becoming, just slightly, more versed.
+book.rituals.knowledge=Minor Knowledge
+book.rituals.knowledge.1=This ritual will let you dive into the world of the Eldritch. It will add other rituals and more knowledge to this book. The only thing need to perform this easy ritual (besides the simbols) is this book.
+book.rituals.knowledge.2=Be warned that venturing too far into the world of the Eldritch can be detrimental to one's own health. You have been warned.
+book.rituals.knowledge.success=You feel yourself becoming, just slightly, more versed.
 #Sunny:
-book.rituals.one.sunny=The Sun Call
-book.rituals.one.sunny.1=Let the sun be yours to call; but not yours to command, not yet. This ritual will clear away rain and make the sun rise up into the heavens.
-book.rituals.one.sunny.2=An extra thing needed for this ritual is a bottle of blood, the controller of the sun does need to be feed now and again.
-book.rituals.one.sunny.success=The sun controller heeds your request, and decides to comply.
+book.rituals.sunny=The Sun Call
+book.rituals.sunny.1=Let the sun be yours to call; but not yours to command, not yet. This ritual will clear away rain and make the sun rise up into the heavens.
+book.rituals.sunny.2=An extra thing needed for this ritual is a bottle of blood, I wouldn't forget this fact.
+book.rituals.sunny.success=The sun controller heeds your request, and decides to comply.
+#Moony
+book.rituals.moony=The Moon Requisition
+book.rituals.moony.1=Such that there is a sun controller, there is a moon controller. Ask it's assistance to clear the skies and call forth the moon.
+book.rituals.moony.2=One more thing the controller requests is a bottle of undead blood.
+book.rituals.moony.success=The moon controller accepts your offering.
 
 book.lore.damien.name=Damien's Lore
 book.lore.thorn.name=Thorn's Lore
@@ -47,6 +55,8 @@ item.simbol_putty_center.name=Simbol Putty Core
 item.ritual_stick.name=Eldritch Ritual Stick
 item.knowledge_book.name=The Book of Eldritch Knowledge
 item.bottle_blood.name=Bottle of Blood
+item.bottle_blood_undead.name=Bottle of Undead Blood
+item.jagged_stick.name=A Jagged Stick
 
 #Eldritch Simbols:
 item.simbol_rune.square.name=Square Simbol
@@ -71,3 +81,6 @@ item.simbol_god.damien.name=Damien's Simbol
 item.simbol_god.thorn.name=Thorn's Simbol
 item.simbol_god.risk.name=Risk's Simbol
 item.simbol_god.enoon.name=$!~!'s Simbol
+
+#Potions
+potion.bleed=Bleed
