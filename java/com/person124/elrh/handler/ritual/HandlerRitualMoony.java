@@ -8,12 +8,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 
+/**
+ * @author Person124
+ */
 public class HandlerRitualMoony extends HandlerRitual {
 
 	public HandlerRitualMoony() {
 		super(EnumRituals.MOONY.getId());
 	}
-	
+
 	public boolean go(BlockPos pos, EntityPlayer player) {
 		if (player.inventory.hasItem(ElrhItems.BOTTLE_BLOOD_UNDEAD)) {
 			player.inventory.consumeInventoryItem(ElrhItems.BOTTLE_BLOOD_UNDEAD);

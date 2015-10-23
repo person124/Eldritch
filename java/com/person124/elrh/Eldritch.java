@@ -16,7 +16,6 @@ import com.person124.elrh.events.PlayerSyncingEvent;
 import com.person124.elrh.events.WorldInitEvent;
 import com.person124.elrh.handler.EldritchGuiHandler;
 import com.person124.elrh.network.PacketHandler;
-import com.person124.elrh.network.packet.EldritchPacketCloseBook;
 import com.person124.elrh.network.packet.EldritchPacketGetRitual;
 import com.person124.elrh.network.sync.EldritchPacketGodSync;
 import com.person124.elrh.network.sync.EldritchPacketKnowledgeSync;
@@ -37,6 +36,9 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/**
+ * @author Person124
+ */
 @Mod(modid = Eldritch.MODID, version = Eldritch.VERSION, name = Eldritch.NAME)
 public class Eldritch {
 
@@ -44,7 +46,7 @@ public class Eldritch {
 	public static Eldritch instance = new Eldritch();
 
 	public static final String MODID = "eldritch";
-	public static final String VERSION = "0.148.0";
+	public static final String VERSION = "0.150.1";
 	public static final String NAME = "Eldritch";
 	public static final Random RAND = new Random();
 	public static final CreativeTabs TAB = new EldritchCreativeTab(MODID);
@@ -109,7 +111,6 @@ public class Eldritch {
 		packetHandler.registerBothPacket(EldritchPacketPlayerSync.class, new EldritchPacketPlayerSync.Handler());
 		//Other
 		packetHandler.registerBothPacket(EldritchPacketGetRitual.class, new EldritchPacketGetRitual.Handler());
-		packetHandler.registerPacket(EldritchPacketCloseBook.class, new EldritchPacketCloseBook.Handler(), Side.CLIENT);
 
 		ElrhBlocks.init();
 		ElrhItems.init();

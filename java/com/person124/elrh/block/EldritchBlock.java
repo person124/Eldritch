@@ -5,6 +5,10 @@ import com.person124.elrh.Eldritch;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
+/**
+ * All eldritch mod blocks should extend this.
+ * @author Person124
+ */
 public class EldritchBlock extends Block {
 
 	public EldritchBlock(Material mat, String name) {
@@ -13,6 +17,9 @@ public class EldritchBlock extends Block {
 		setCreativeTab(Eldritch.TAB);
 	}
 
+	/**
+	 * @return The unlocalized name of the block in a format that can be used by minecraft.
+	 */
 	public String getName() {
 		return getUnlocalizedName().replace("tile.", "");
 	}
@@ -37,6 +44,11 @@ public class EldritchBlock extends Block {
 		return this;
 	}
 
+	/**
+	 * @param tool Tool options are: "pickaxe" "axe" "shovel"
+	 * @param level 0=Wood, 1=Stone, 2=Iron, 3=Diamond, 0=Gold
+	 * @return
+	 */
 	public EldritchBlock setHarvestLevelNew(String tool, int level) {
 		super.setHarvestLevel(tool, level);
 		return this;

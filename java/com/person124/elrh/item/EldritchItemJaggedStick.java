@@ -7,6 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 
+/**
+ * @author Person124
+ */
 public class EldritchItemJaggedStick extends EldritchItem {
 
 	public EldritchItemJaggedStick(String name) {
@@ -18,9 +21,9 @@ public class EldritchItemJaggedStick extends EldritchItem {
 		PotionEffect potion = new PotionEffect(EldritchPotions.getPotion(0).id, 100);
 		potion.setCurativeItems(null);
 		target.addPotionEffect(potion);
-		
+
 		stack.damageItem(1, attacker);
-		
+
 		return false;
 	}
 

@@ -2,6 +2,13 @@ package com.person124.elrh.block;
 
 import java.util.Random;
 
+import com.person124.elrh.Eldritch;
+import com.person124.elrh.ElrhBlocks;
+import com.person124.elrh.ElrhItems;
+import com.person124.elrh.enums.EnumRituals;
+import com.person124.elrh.enums.EnumSimbolType;
+import com.person124.elrh.handler.RitualHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,13 +20,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import com.person124.elrh.Eldritch;
-import com.person124.elrh.ElrhBlocks;
-import com.person124.elrh.ElrhItems;
-import com.person124.elrh.enums.EnumRituals;
-import com.person124.elrh.enums.EnumSimbolType;
-import com.person124.elrh.handler.RitualHandler;
-
+/**
+ * @author Person124
+ */
 public class EldritchBlockRitualCenter extends EldritchBlockRitualBorder {
 
 	public EldritchBlockRitualCenter(String name) {

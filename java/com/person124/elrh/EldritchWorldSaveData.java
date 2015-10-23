@@ -3,11 +3,15 @@ package com.person124.elrh;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.person124.elrh.enums.EnumRituals;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.WorldSavedData;
 
-import com.person124.elrh.enums.EnumRituals;
-
+/**
+ * Saves additional data per world save.
+ * @author Person124
+ */
 public class EldritchWorldSaveData extends WorldSavedData {
 
 	public static final byte VERSION = 8;
@@ -69,10 +73,17 @@ public class EldritchWorldSaveData extends WorldSavedData {
 		return version == VERSION;
 	}
 
+	/**
+	 * @return All saved recipes as a HashMap of Bytes and Strings.
+	 */
 	public HashMap<Byte, String> getRecipes() {
 		return recipes;
 	}
 
+	/**
+	 * Takes a recipe input and outputs the matching EnumRitual.
+	 * @param s The recipe as a string.
+	 */
 	public EnumRituals matchRecipe(String s) {
 		for (Map.Entry<Byte, String> i : recipes.entrySet()) {
 			if (i.getValue().equals(s)) return EnumRituals.getById(i.getKey());
@@ -80,6 +91,9 @@ public class EldritchWorldSaveData extends WorldSavedData {
 		return null;
 	}
 
+	/**
+	 * Takes a byte input and outputs the matching recipe as a string.
+	 */
 	public String getRecipeFromID(byte id) {
 		if (!recipes.containsKey(id)) return null;
 		return recipes.get(id);

@@ -12,6 +12,9 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * @author Person124
+ */
 public class EldritchPacketGetRitual implements IMessage {
 
 	private byte id;
@@ -31,7 +34,7 @@ public class EldritchPacketGetRitual implements IMessage {
 
 	public void fromBytes(ByteBuf buf) {
 		id = (byte) buf.readChar();
-		
+
 		String temp = "";
 		for (int i = 0; i < 8; i++) {
 			temp += buf.readChar();

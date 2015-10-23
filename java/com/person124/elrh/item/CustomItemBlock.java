@@ -1,11 +1,15 @@
 package com.person124.elrh.item;
 
+import com.person124.elrh.inter.IMetaBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-import com.person124.elrh.inter.IMetaBlock;
-
+/**
+ * If a custom block has subtypes, this is the ItemBlock that should be used when registering the said block.
+ * @author Person124
+ */
 public class CustomItemBlock extends ItemBlock {
 
 	public CustomItemBlock(Block block) {

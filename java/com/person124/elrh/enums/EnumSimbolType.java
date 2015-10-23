@@ -1,11 +1,14 @@
 package com.person124.elrh.enums;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
-
 import com.person124.elrh.Eldritch;
 import com.person124.elrh.ElrhItems;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
+
+/**
+ * @author Person124
+ */
 public enum EnumSimbolType implements IStringSerializable {
 
 	//God == '!'
@@ -62,6 +65,10 @@ public enum EnumSimbolType implements IStringSerializable {
 		return CRAFTING;
 	}
 
+	public String getName() {
+		return UNLOC_NAME;
+	}
+
 	public Object[] getCraftingRecipe() {
 		Object[] objs = new Object[4 + CRAFTING.length];
 		int i = 0;
@@ -90,12 +97,18 @@ public enum EnumSimbolType implements IStringSerializable {
 		return objs;
 	}
 
+	/**
+	 * Returns a simbol based on damage values.
+	 */
 	public static EnumSimbolType byDamage(int damage) {
 		if (damage < 0 || damage >= DMG_LOOKUP.length) damage = 0;
 
 		return DMG_LOOKUP[damage];
 	}
 
+	/**
+	 * Returns a simbol based on the char value.
+	 */
 	public static EnumSimbolType byChar(char c) {
 		for (EnumSimbolType t : values()) {
 			if (t.getChar() == c) return t;
@@ -114,10 +127,6 @@ public enum EnumSimbolType implements IStringSerializable {
 			EnumSimbolType type = types[i];
 			DMG_LOOKUP[type.getDamage()] = type;
 		}
-	}
-
-	public String getName() {
-		return UNLOC_NAME;
 	}
 
 }

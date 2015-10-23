@@ -17,6 +17,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
+/**
+ * I'll explain the methods later......
+ * @author Person124
+ */
 public class GuiKnowledgeBook extends GuiScreen {
 
 	private static Pages lastPageOnClose = null;
@@ -128,7 +132,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 			int hover = -1;
 			if (mouseX >= w + TEXT_IN_SIZE && mouseX <= w + TEXT_IN_SIZE + TEXT_WRAP) hover = (mouseY - h - TEXT_DOWN_BASE) / 12;
 
-			for (int i = 2; i < KnowledgeBookPages.getEntires(currentPage) + 2; i++) {
+			for (int i = 2; i < KnowledgeBookPages.getEntries(currentPage) + 2; i++) {
 				if (!KnowledgeBookPages.isRitOnLine(currentPage, i)) {
 					drawLocalizedText("--------------------", i, COLOR);
 				} else if (KnowledgeBookPages.hasEnoughKnowledge(currentPage, i, DATA)) {

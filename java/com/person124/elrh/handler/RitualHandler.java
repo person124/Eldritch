@@ -11,8 +11,17 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 
+/**
+ * @author Person124
+ */
 public class RitualHandler {
 
+	/**
+	 * Tries to perform a ritual.
+	 * @param id The ritual's id.
+	 * @param pos The BlockPos of the center ritual block.
+	 * @param player The player doing the ritual.
+	 */
 	public void execute(byte id, BlockPos pos, EntityPlayer player) {
 		try {
 			EnumRituals rit = EnumRituals.getById(id);
@@ -26,6 +35,11 @@ public class RitualHandler {
 		}
 	}
 
+	/**
+	 * If the ritual was successful.
+	 * @param pos The BlockPos of the center ritual block.
+	 * @param player The player doing the ritual.
+	 */
 	private void success(BlockPos pos, EntityPlayer player) {
 		World world = player.worldObj;
 
@@ -45,6 +59,12 @@ public class RitualHandler {
 		}
 	}
 
+	/**
+	 * If the ritual failed.
+	 * @param pos The BlockPos of the center ritual block.
+	 * @param player The player doing the ritual.
+	 * @param impor The importance level of the ritual.
+	 */
 	private void failure(BlockPos pos, EntityPlayer player, EnumRituals.Importance impor) {
 		World world = player.worldObj;
 

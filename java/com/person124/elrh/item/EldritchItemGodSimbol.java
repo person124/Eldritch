@@ -2,6 +2,9 @@ package com.person124.elrh.item;
 
 import java.util.List;
 
+import com.person124.elrh.ElrhBlocks;
+import com.person124.elrh.enums.EnumSimbolGods;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -12,9 +15,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.person124.elrh.ElrhBlocks;
-import com.person124.elrh.enums.EnumSimbolGods;
-
+/**
+ * @author Person124
+ */
 public class EldritchItemGodSimbol extends EldritchItem {
 
 	public EldritchItemGodSimbol(String name) {

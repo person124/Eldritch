@@ -4,6 +4,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * @author Person124
+ */
 public class MessageHandler {
 
 	public static abstract class Client<T extends IMessage> extends AbstractMessageHandler<T> {
@@ -18,8 +21,6 @@ public class MessageHandler {
 		}
 	}
 
-	public static abstract class BothDirectional<T extends IMessage> extends AbstractMessageHandler<T> {
-
-	}
+	public static abstract class BothDirectional<T extends IMessage> extends AbstractMessageHandler<T> {}
 
 }

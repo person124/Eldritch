@@ -2,6 +2,10 @@ package com.person124.elrh.block;
 
 import java.util.Random;
 
+import com.person124.elrh.ElrhItems;
+import com.person124.elrh.enums.EnumSimbolGods;
+import com.person124.elrh.inter.IMetaBlock;
+
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -12,10 +16,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import com.person124.elrh.ElrhItems;
-import com.person124.elrh.enums.EnumSimbolGods;
-import com.person124.elrh.inter.IMetaBlock;
-
+/**
+ * @author Person124
+ */
 public class EldritchBlockRitualGods extends EldritchBlockRitualBorder implements IMetaBlock {
 
 	public static final PropertyEnum TYPE = PropertyEnum.create("god", EnumSimbolGods.class);

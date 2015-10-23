@@ -5,6 +5,9 @@ import com.person124.elrh.potions.EldritchPotions;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * @author Person124
+ */
 public class NewPotionsEvent {
 
 	@SubscribeEvent

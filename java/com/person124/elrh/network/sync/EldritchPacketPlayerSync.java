@@ -1,5 +1,8 @@
 package com.person124.elrh.network.sync;
 
+import com.person124.elrh.EldritchPlayerData;
+import com.person124.elrh.network.MessageHandler;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,9 +12,9 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import com.person124.elrh.EldritchPlayerData;
-import com.person124.elrh.network.MessageHandler;
-
+/**
+ * @author Person124
+ */
 public class EldritchPacketPlayerSync implements IMessage {
 
 	private NBTTagCompound data;

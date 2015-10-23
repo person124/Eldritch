@@ -4,8 +4,8 @@ import com.person124.elrh.enums.EnumSimbolGods;
 import com.person124.elrh.enums.EnumSimbolType;
 import com.person124.elrh.item.EldritchItem;
 import com.person124.elrh.item.EldritchItemBook;
-import com.person124.elrh.item.EldritchItemJaggedStick;
 import com.person124.elrh.item.EldritchItemGodSimbol;
+import com.person124.elrh.item.EldritchItemJaggedStick;
 import com.person124.elrh.item.EldritchItemPutty;
 import com.person124.elrh.item.EldritchItemSimbol;
 
@@ -21,11 +21,11 @@ public class ElrhItems {
 	public static final EldritchItem BOTTLE_BLOOD = new EldritchItem("bottle_blood").setMaxStackSize(1);
 	public static final EldritchItem BOTTLE_BLOOD_UNDEAD = new EldritchItem("bottle_blood_undead").setMaxStackSize(1);
 	public static final EldritchItem BOOK_OF_KNOWLEDGE = new EldritchItemBook("knowledge_book").setMaxStackSize(1);
-	
+
 	public static final EldritchItem SIMBOL_PUTTY = new EldritchItemPutty("simbol_putty", ElrhBlocks.RITUAL_BORDER);
 	public static final EldritchItem SIMBOL_PUTTY_CENTER = new EldritchItemPutty("simbol_putty_center", ElrhBlocks.RITUAL_CENTER).setMaxStackSize(1);
 	public static final EldritchItem RITUAL_SICK = new EldritchItem("ritual_stick").setMaxStackSize(1).setMaxDamage(21);
-	
+
 	public static final EldritchItem SIMBOLS = new EldritchItemSimbol("simbol_rune").setMaxStackSize(16);
 	public static final EldritchItem SIMBOLS_GODS = new EldritchItemGodSimbol("simbol_god").setMaxStackSize(16);
 
@@ -41,7 +41,7 @@ public class ElrhItems {
 
 		register(BOOK_OF_KNOWLEDGE);
 		GameRegistry.addShapelessRecipe(new ItemStack(BOOK_OF_KNOWLEDGE), new ItemStack(BOTTLE_BLOOD), new ItemStack(Items.feather), new ItemStack(Items.book));
-		
+
 		//Set two
 		register(SIMBOL_PUTTY);
 		for (int i = 0; i < 16; i++) {
@@ -53,7 +53,7 @@ public class ElrhItems {
 
 		register(RITUAL_SICK);
 		GameRegistry.addShapelessRecipe(new ItemStack(RITUAL_SICK), new ItemStack(SIMBOL_PUTTY_CENTER), new ItemStack(Items.stick));
-		
+
 		//Set three
 		register(SIMBOLS, EnumSimbolType.class);
 		for (int i = 0; i < 16; i++) {
@@ -66,6 +66,11 @@ public class ElrhItems {
 		}
 	}
 
+	/**
+	 * Puts an item in the game, and adds its renderer to the list.
+	 * @param item The item to register.
+	 * @author Person124
+	 */
 	private static void register(EldritchItem item) {
 		GameRegistry.registerItem(item, item.getName());
 
@@ -74,6 +79,12 @@ public class ElrhItems {
 		}
 	}
 
+	/**
+	 * Puts an item that has subtypes into the game, and adds its renderer to the list.
+	 * @param item The item to register.
+	 * @param c The enum class that contains the items subtypes.
+	 * @author Person124
+	 */
 	private static void register(EldritchItem item, Class<? extends Enum<?>> c) {
 		GameRegistry.registerItem(item, item.getName());
 

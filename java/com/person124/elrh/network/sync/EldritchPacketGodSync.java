@@ -10,12 +10,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * @author Person124
+ */
 public class EldritchPacketGodSync implements IMessage {
-	
+
 	private EnumSimbolGods god;
-	
+
 	public EldritchPacketGodSync() {}
-	
+
 	public EldritchPacketGodSync(EnumSimbolGods god) {
 		this.god = god;
 	}
@@ -27,7 +30,7 @@ public class EldritchPacketGodSync implements IMessage {
 	public void toBytes(ByteBuf buf) {
 		buf.writeByte(god.getDamage());
 	}
-	
+
 	public static class Handler extends MessageHandler.Client<EldritchPacketGodSync> {
 
 		public IMessage handleClientMessage(final EntityPlayer player, final EldritchPacketGodSync packet, MessageContext cxt) {
@@ -38,7 +41,7 @@ public class EldritchPacketGodSync implements IMessage {
 			});
 			return null;
 		}
-		
+
 	}
 
 }

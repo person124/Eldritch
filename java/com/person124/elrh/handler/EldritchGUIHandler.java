@@ -2,15 +2,18 @@ package com.person124.elrh.handler;
 
 import java.lang.reflect.InvocationTargetException;
 
+import com.person124.elrh.Eldritch;
+import com.person124.elrh.EldritchPlayerData;
+import com.person124.elrh.gui.GuiKnowledgeBook;
+
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
-import com.person124.elrh.Eldritch;
-import com.person124.elrh.EldritchPlayerData;
-import com.person124.elrh.gui.GuiKnowledgeBook;
-
+/**
+ * @author Person124
+ */
 public class EldritchGuiHandler implements IGuiHandler {
 
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {

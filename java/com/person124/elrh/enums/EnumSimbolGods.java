@@ -2,11 +2,14 @@ package com.person124.elrh.enums;
 
 import java.util.HashMap;
 
+import com.person124.elrh.ElrhItems;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
-import com.person124.elrh.ElrhItems;
-
+/**
+ * @author Person124
+ */
 public enum EnumSimbolGods implements IStringSerializable {
 
 	DAMIEN(0, "damien", 1, 3, EnumSimbolType.CORNERS.getChar() + "" + EnumSimbolType.HORI.getChar() + " ", " " + EnumSimbolType.VERT.getChar() + " ", " " + EnumSimbolType.HORI.getChar() + " "),
@@ -61,15 +64,24 @@ public enum EnumSimbolGods implements IStringSerializable {
 
 		return objs;
 	}
-	
+
+	/**
+	 * @return If god with specified id is an enemy of this god or not.
+	 */
 	public boolean isEnemy(int compare) {
 		return ENEMY == compare;
 	}
-	
+
+	/**
+	 * @return If god with specified id is an ally of this god or not.
+	 */
 	public boolean isAlly(int compare) {
 		return ALLY == compare;
 	}
-	
+
+	/**
+	 * @return If god with specified id is neutral to this god or not.
+	 */
 	public boolean isNeutral(int compare) {
 		return ENEMY != compare && ALLY != compare;
 	}
@@ -90,6 +102,9 @@ public enum EnumSimbolGods implements IStringSerializable {
 		return UNLOC_NAME;
 	}
 
+	/**
+	 * Returns a god simbol based on damage value.
+	 */
 	public static EnumSimbolGods byDamage(int damage) {
 		for (EnumSimbolGods g : values()) {
 			if (g.getDamage() == damage) return g;

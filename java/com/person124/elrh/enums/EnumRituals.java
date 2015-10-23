@@ -13,6 +13,9 @@ import com.person124.elrh.handler.ritual.HandlerRitualSunny;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 
+/**
+ * @author Person124
+ */
 public enum EnumRituals {
 
 	KNOWLEDGE(0, 2, "knowledge", HandlerRitualKnowledge.class, Importance.SMALL, KnowRequirement.NONE),
@@ -88,6 +91,9 @@ public enum EnumRituals {
 		return handler;
 	}
 
+	/**
+	 * Returns a ritual based on the id.
+	 */
 	public static EnumRituals getById(byte b) {
 		for (EnumRituals r : values()) {
 			if (r.id == b) return r;
@@ -95,6 +101,9 @@ public enum EnumRituals {
 		return null;
 	}
 
+	/**
+	 * Returns a ritual based on the reference string.
+	 */
 	public static EnumRituals getByReference(String ref) {
 		for (EnumRituals r : values()) {
 			if (r.reference.equals(ref)) return r;
@@ -138,18 +147,21 @@ public enum EnumRituals {
 		ONE(0),
 		TWO(1),
 		THREE(2);
-		
+
 		private byte value;
-		
+
 		private KnowRequirement(int i) {
 			value = (byte) i;
 		}
-		
+
 		public byte getValue() {
 			return value;
 		}
 
-		public boolean canPlayerCast(EntityPlayer player) {
+		/**
+		 * Returns if a player has the right knowledge requirement to perform a ritual.
+		 */
+		public boolean canPlayerPerform(EntityPlayer player) {
 			if (this == KnowRequirement.NONE) return true;
 			return EldritchPlayerData.get(player).hasKnowledge(value);
 		}

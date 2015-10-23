@@ -1,11 +1,14 @@
 package com.person124.elrh.events;
 
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 import com.person124.elrh.Eldritch;
 import com.person124.elrh.EldritchWorldSaveData;
 
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+/**
+ * @author Person124
+ */
 public class WorldInitEvent {
 
 	@SubscribeEvent

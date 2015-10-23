@@ -33,6 +33,12 @@ public class ElrhBlocks {
 		register(RITUAL_SIMBOL_GOD, false, CustomItemBlock.class, EnumSimbolGods.class);
 	}
 
+	/**
+	 * Puts a block into the game, and can add its <b>inventory</b> renderer to the list.
+	 * @param block The block to register.
+	 * @param invRender Whether or not to add an inventory renderer.
+	 * @author Person124
+	 */
 	private static void register(EldritchBlock block, boolean invRender) {
 		GameRegistry.registerBlock(block, block.getName());
 
@@ -41,6 +47,15 @@ public class ElrhBlocks {
 		}
 	}
 
+	/**
+	 * Puts a block with subtypes into the game, and can add its <b>inventory</b> renderer to the list.
+	 * @param block The block to register.
+	 * @param invRender Whether or not to add an inventory renderer.
+	 * @param item The associated ItemBlock.
+	 * @param c The enum class that contains the items subtypes.
+	 * @author Person124
+	 * @see CustomItemBlock
+	 */
 	private static void register(EldritchBlock block, boolean invRender, Class<? extends ItemBlock> item, Class<? extends Enum<?>> c) {
 		GameRegistry.registerBlock(block, item, block.getName());
 

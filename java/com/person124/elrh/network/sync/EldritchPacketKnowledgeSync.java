@@ -9,12 +9,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * @author Person124
+ */
 public class EldritchPacketKnowledgeSync implements IMessage {
-	
+
 	private boolean[] data;
-	
+
 	public EldritchPacketKnowledgeSync() {}
-	
+
 	public EldritchPacketKnowledgeSync(boolean[] data) {
 		this.data = data;
 	}
@@ -31,9 +34,9 @@ public class EldritchPacketKnowledgeSync implements IMessage {
 			buf.writeBoolean(data[i]);
 		}
 	}
-	
+
 	public static class Handler extends MessageHandler.Client<EldritchPacketKnowledgeSync> {
-		
+
 		public IMessage handleClientMessage(final EntityPlayer player, final EldritchPacketKnowledgeSync packet, MessageContext cxt) {
 			Minecraft.getMinecraft().addScheduledTask(new Runnable() {
 				public void run() {
@@ -42,7 +45,7 @@ public class EldritchPacketKnowledgeSync implements IMessage {
 			});
 			return null;
 		}
-		
+
 	}
 
 }

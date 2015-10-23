@@ -2,6 +2,8 @@ package com.person124.elrh.block;
 
 import java.util.Random;
 
+import com.person124.elrh.ElrhItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,8 +18,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.person124.elrh.ElrhItems;
-
+/**
+ * @author Person124
+ */
 public class EldritchBlockRitualBorder extends EldritchBlock {
 
 	public EldritchBlockRitualBorder(String name) {
