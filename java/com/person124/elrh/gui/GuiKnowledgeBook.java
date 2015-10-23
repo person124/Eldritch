@@ -3,20 +3,19 @@ package com.person124.elrh.gui;
 import java.io.IOException;
 import java.util.HashMap;
 
+import com.person124.elrh.Eldritch;
+import com.person124.elrh.EldritchPlayerData;
+import com.person124.elrh.enums.EnumRituals;
+import com.person124.elrh.enums.EnumSimbolType;
+import com.person124.elrh.enums.KnowledgeBookPages;
+import com.person124.elrh.network.packet.EldritchPacketGetRitual;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-
-import com.person124.elrh.Eldritch;
-import com.person124.elrh.EldritchPlayerData;
-import com.person124.elrh.enums.KnowledgeBookPages;
-import com.person124.elrh.enums.EnumRituals;
-import com.person124.elrh.enums.EnumRituals.KnowRequirement;
-import com.person124.elrh.network.packet.EldritchPacketGetRitual;
-import com.person124.elrh.enums.EnumSimbolType;
 
 public class GuiKnowledgeBook extends GuiScreen {
 
@@ -84,10 +83,9 @@ public class GuiKnowledgeBook extends GuiScreen {
 	public GuiKnowledgeBook(EldritchPlayerData data) {
 		DATA = data;
 
-		if (lastPageOnClose == null) {
-			updatePage(Pages.INDEX);
-			cachedRecipes = new HashMap<Byte, String>();
-		} else {
+		if (cachedRecipes == null) cachedRecipes = new HashMap<Byte, String>();
+		if (lastPageOnClose == null) updatePage(Pages.INDEX);
+		else {
 			updatePage(lastPageOnClose);
 			currentPage = lastPageNumOnClose;
 			selectedRitual = lastSelectedRitual;
@@ -161,7 +159,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 			byte hover = (byte) ((mouseY - h - TEXT_DOWN_BASE) / 12);
 
 			if (KnowledgeBookPages.isRitOnLine(currentPage, hover)) {
-				if (!(KnowledgeBookPages.needsKnowledge(currentPage, hover) == KnowRequirement.ONE && !DATA.hasBasicKnowledge())) {
+				if (KnowledgeBookPages.hasEnoughKnowledge(currentPage, hover, DATA)) {
 					buttonNextPage.playPressSound(mc.getSoundHandler());
 					selectedRitual = KnowledgeBookPages.getRitString(currentPage, hover);
 					updatePage(Pages.ABOUT_RITUAL);
@@ -259,7 +257,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 	private void drawLocalizedText(String s, int rowNum, int color) {
 		fontRendererObj.drawSplitString(s, w + TEXT_IN_SIZE, h + TEXT_DOWN_BASE + TEXT_DOWN_EXTRA * rowNum, TEXT_WRAP, color);
 	}
-	
+
 	private void drawGalaticText(String s, int rowNum, int color) {
 		mc.standardGalacticFontRenderer.drawString(s, w + TEXT_IN_SIZE, h + TEXT_DOWN_BASE + TEXT_DOWN_EXTRA * rowNum, color);
 	}
@@ -291,7 +289,7 @@ public class GuiKnowledgeBook extends GuiScreen {
 	}
 
 	private void drawRitualRecipe(int wid, int hei, byte id) {
-		if (!cachedRecipes.containsKey(id)) {
+		if (!cachedRecipes.containsKey(id) || cachedRecipes.get(id) == null) {
 			Eldritch.packetHandler.sendToServer(new EldritchPacketGetRitual(id));
 			return;
 		}
@@ -303,12 +301,20 @@ public class GuiKnowledgeBook extends GuiScreen {
 		int x = 0, y = 0;
 		for (char c : cachedRecipes.get(id).toCharArray()) {
 			if (c != '-') {
-				mc.getTextureManager().bindTexture(new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_rune_" + EnumSimbolType.byChar(c).getUnlocalizedName() + ".png"));
-				drawModalRectWithCustomSizedTexture(wid + 16 + (16 * x), hei + 16 + (16 * y), 0, 0, 16, 16, 16, 16);
+				int xp = wid + 16 + (16 * x);
+				int yp = hei + 16 + (16 * y);
+
+				if (c == '!') {
+					mc.getTextureManager().bindTexture(BOOK_TEXTURE);
+					drawTexturedModalRect(xp, yp, 49, 194, 16, 16);
+				} else {
+					mc.getTextureManager().bindTexture(new ResourceLocation(Eldritch.MODID + ":textures/items/simbol_rune_" + EnumSimbolType.byChar(c).getUnlocalizedName() + ".png"));
+					drawModalRectWithCustomSizedTexture(xp, yp, 0, 0, 16, 16, 16, 16);
+				}
 			}
 
 			x++;
-			if (x == 1 && y == 1) x++;
+			if (y == 1 && x == 1) x++;
 			if (x == 3) {
 				x = 0;
 				y++;

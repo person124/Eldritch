@@ -1,24 +1,18 @@
 package com.person124.elrh.events;
 
-import com.person124.elrh.gui.GuiKnowledgeBook;
+import com.person124.elrh.Eldritch;
+import com.person124.elrh.network.packet.EldritchPacketCloseBook;
 
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 
 public class PlayerDisconnectEvent {
 
-	@SubscribeEvent
+	@EventHandler
 	public void onPlayerDisconnect(PlayerLoggedOutEvent event) {
-		if (event.player.worldObj.isRemote) {
-			GuiKnowledgeBook.onPlayerLeave();
-		}
-	}
-	
-	@SubscribeEvent
-	public void onWorldUnload(WorldEvent.Unload event) {
-		if (event.world.isRemote) {
-			GuiKnowledgeBook.onPlayerLeave();
+		if (!event.player.worldObj.isRemote) {
+			Eldritch.packetHandler.sendTo(new EldritchPacketCloseBook(), (EntityPlayerMP) event.player);
 		}
 	}
 

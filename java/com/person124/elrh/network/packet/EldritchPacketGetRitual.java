@@ -30,14 +30,20 @@ public class EldritchPacketGetRitual implements IMessage {
 	}
 
 	public void fromBytes(ByteBuf buf) {
-		String temp = new String(buf.array());
-		recipe = temp.substring(2, 9);
-		id = (byte) temp.charAt(1);
+		id = (byte) buf.readChar();
+		
+		String temp = "";
+		for (int i = 0; i < 8; i++) {
+			temp += buf.readChar();
+		}
+		recipe = temp;
 	}
 
 	public void toBytes(ByteBuf buf) {
-		String temp = new String(new byte[] { id }) + recipe;
-		buf.writeBytes(temp.getBytes());
+		buf.writeChar(id);
+		for (int i = 0; i < 8; i++) {
+			buf.writeChar(recipe.charAt(i));
+		}
 	}
 
 	public static class Handler extends MessageHandler.BothDirectional<EldritchPacketGetRitual> {

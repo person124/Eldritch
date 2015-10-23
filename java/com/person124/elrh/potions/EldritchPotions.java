@@ -7,14 +7,14 @@ import net.minecraft.util.ResourceLocation;
 
 public class EldritchPotions {
 	
-	public static final byte BASE = 124, TEXTURE_SIZE = 4;
+	public static final byte BASE = 124;
 	public static final ResourceLocation LOCATION = new ResourceLocation(Eldritch.MODID + ":textures/gui/potions.png");
 	
 	private static final EldritchPotionBase[] P;
 	
 	static {
 		P = new EldritchPotionBase[1];
-		P[0] = new EldritchPotionBleed();
+		P[0] = new EldritchPotionBleed(0);
 	}
 	
 	public static void triggerUpdate(EntityLivingBase e) {

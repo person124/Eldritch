@@ -8,18 +8,18 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 
-public class HandlerRitualMoony extends HandlerRitual {
+public class HandlerRitualStormy extends HandlerRitual {
 
-	public HandlerRitualMoony() {
-		super(EnumRituals.MOONY.getId());
+	public HandlerRitualStormy() {
+		super(EnumRituals.STORMY.getId());
 	}
 	
 	public boolean go(BlockPos pos, EntityPlayer player) {
-		if (player.inventory.hasItem(ElrhItems.BOTTLE_BLOOD_UNDEAD)) {
+		if (player.inventory.hasItem(ElrhItems.BOTTLE_BLOOD) && player.inventory.hasItem(ElrhItems.BOTTLE_BLOOD_UNDEAD)) {
+			player.inventory.consumeInventoryItem(ElrhItems.BOTTLE_BLOOD);
 			player.inventory.consumeInventoryItem(ElrhItems.BOTTLE_BLOOD_UNDEAD);
-			player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
-			player.worldObj.setWorldTime(18000);
-			player.worldObj.getWorldInfo().setRaining(false);
+			player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle, 2));
+			player.worldObj.getWorldInfo().setRaining(true);
 			player.worldObj.updateWeatherBody();
 			return true;
 		}

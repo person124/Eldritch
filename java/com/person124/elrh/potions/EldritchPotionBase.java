@@ -15,7 +15,7 @@ public class EldritchPotionBase extends Potion {
 	private static byte textureX, textureY;
 
 	public EldritchPotionBase(int id, String name, boolean badEffect, int potionColor) {
-		super(id, new ResourceLocation(Eldritch.MODID + ":" + name), badEffect, potionColor);
+		super(EldritchPotions.BASE + id, new ResourceLocation(Eldritch.MODID + ":" + name), badEffect, potionColor);
 		setPotionName("potion." + name);
 	}
 

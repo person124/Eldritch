@@ -11,7 +11,7 @@ import com.person124.elrh.Eldritch;
 import com.person124.elrh.EldritchPlayerData;
 import com.person124.elrh.gui.GuiKnowledgeBook;
 
-public class EldritchGUIHandler implements IGuiHandler {
+public class EldritchGuiHandler implements IGuiHandler {
 
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		return GUIs.byID(id).getInstance(player);

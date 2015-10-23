@@ -9,15 +9,17 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.person124.elrh.events.PlayerRightClickEntityEvent;
 import com.person124.elrh.events.NewPotionsEvent;
 import com.person124.elrh.events.PlayerDisconnectEvent;
+import com.person124.elrh.events.PlayerRightClickEntityEvent;
 import com.person124.elrh.events.PlayerSyncingEvent;
 import com.person124.elrh.events.WorldInitEvent;
-import com.person124.elrh.handler.EldritchGUIHandler;
+import com.person124.elrh.handler.EldritchGuiHandler;
 import com.person124.elrh.network.PacketHandler;
+import com.person124.elrh.network.packet.EldritchPacketCloseBook;
 import com.person124.elrh.network.packet.EldritchPacketGetRitual;
-import com.person124.elrh.network.sync.EldritchPacketBooleanSync;
+import com.person124.elrh.network.sync.EldritchPacketGodSync;
+import com.person124.elrh.network.sync.EldritchPacketKnowledgeSync;
 import com.person124.elrh.network.sync.EldritchPacketPlayerSync;
 
 import net.minecraft.client.Minecraft;
@@ -42,10 +44,10 @@ public class Eldritch {
 	public static Eldritch instance = new Eldritch();
 
 	public static final String MODID = "eldritch";
-	public static final String VERSION = "0.96.0";
+	public static final String VERSION = "0.148.0";
 	public static final String NAME = "Eldritch";
 	public static final Random RAND = new Random();
-	public static final CreativeTabs TAB = new EldritchCreativeTab("eldritch");
+	public static final CreativeTabs TAB = new EldritchCreativeTab(MODID);
 
 	@SideOnly(Side.CLIENT)
 	public static RenderItem renderItem;
@@ -82,18 +84,17 @@ public class Eldritch {
 		event.getModMetadata().authorList = Arrays.asList("person124");
 		event.getModMetadata().version = VERSION;
 		event.getModMetadata().modId = MODID;
-		
+
 		allowNewPotions();
 
 		MinecraftForge.EVENT_BUS.register(new WorldInitEvent());
 		MinecraftForge.EVENT_BUS.register(new PlayerSyncingEvent());
 		MinecraftForge.EVENT_BUS.register(new PlayerRightClickEntityEvent());
-		MinecraftForge.EVENT_BUS.register(new PlayerDisconnectEvent());
 		MinecraftForge.EVENT_BUS.register(new NewPotionsEvent());
 
 		FMLCommonHandler.instance().bus().register(new PlayerDisconnectEvent());
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(Eldritch.instance, new EldritchGUIHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Eldritch.instance, new EldritchGuiHandler());
 	}
 
 	@EventHandler
@@ -102,14 +103,18 @@ public class Eldritch {
 		isClient = event.getSide() == Side.CLIENT;
 
 		packetHandler = new PacketHandler(MODID);
-		packetHandler.registerPacket(EldritchPacketBooleanSync.class, new EldritchPacketBooleanSync.Handler(), Side.SERVER);
-		packetHandler.registerBothPacket(EldritchPacketGetRitual.class, new EldritchPacketGetRitual.Handler());
+		//Syning Packets
+		packetHandler.registerPacket(EldritchPacketKnowledgeSync.class, new EldritchPacketKnowledgeSync.Handler(), Side.CLIENT);
+		packetHandler.registerPacket(EldritchPacketGodSync.class, new EldritchPacketGodSync.Handler(), Side.CLIENT);
 		packetHandler.registerBothPacket(EldritchPacketPlayerSync.class, new EldritchPacketPlayerSync.Handler());
+		//Other
+		packetHandler.registerBothPacket(EldritchPacketGetRitual.class, new EldritchPacketGetRitual.Handler());
+		packetHandler.registerPacket(EldritchPacketCloseBook.class, new EldritchPacketCloseBook.Handler(), Side.CLIENT);
 
 		ElrhBlocks.init();
 		ElrhItems.init();
 	}
-	
+
 	private void allowNewPotions() {
 		Potion[] potionTypes = null;
 		for (Field f : Potion.class.getDeclaredFields()) {
@@ -119,7 +124,7 @@ public class Eldritch {
 					Field modField = Field.class.getDeclaredField("modifiers");
 					modField.setAccessible(true);
 					modField.setInt(f, f.getModifiers() & ~Modifier.FINAL);
-					
+
 					potionTypes = (Potion[]) f.get(null);
 					final Potion[] POTION_TYPES = new Potion[265];
 					System.arraycopy(potionTypes, 0, POTION_TYPES, 0, potionTypes.length);

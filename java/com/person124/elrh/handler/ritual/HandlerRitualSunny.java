@@ -8,13 +8,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 
-public class HandlerRitualSunny extends HandlerRitualBase {
+public class HandlerRitualSunny extends HandlerRitual {
 
 	public HandlerRitualSunny() {
 		super(EnumRituals.SUNNY.getId());
 	}
 	
-	public boolean execute(BlockPos pos, EntityPlayer player) {
+	public boolean go(BlockPos pos, EntityPlayer player) {
 		if (player.inventory.hasItem(ElrhItems.BOTTLE_BLOOD)) {
 			player.inventory.consumeInventoryItem(ElrhItems.BOTTLE_BLOOD);
 			player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));

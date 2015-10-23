@@ -1,10 +1,13 @@
 package com.person124.elrh.enums;
 
 import com.person124.elrh.Eldritch;
+import com.person124.elrh.EldritchPlayerData;
 import com.person124.elrh.handler.RitualHandler;
-import com.person124.elrh.handler.ritual.HandlerRitualBase;
+import com.person124.elrh.handler.ritual.HandlerRitual;
+import com.person124.elrh.handler.ritual.HandlerRitualBind;
 import com.person124.elrh.handler.ritual.HandlerRitualKnowledge;
 import com.person124.elrh.handler.ritual.HandlerRitualMoony;
+import com.person124.elrh.handler.ritual.HandlerRitualStormy;
 import com.person124.elrh.handler.ritual.HandlerRitualSunny;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +17,9 @@ public enum EnumRituals {
 
 	KNOWLEDGE(0, 2, "knowledge", HandlerRitualKnowledge.class, Importance.SMALL, KnowRequirement.NONE),
 	SUNNY(1, 3, "sunny", HandlerRitualSunny.class, Importance.SMALL, KnowRequirement.ONE),
-	MOONY(2, 3, "moony", HandlerRitualMoony.class, Importance.SMALL, KnowRequirement.ONE);
+	MOONY(2, 3, "moony", HandlerRitualMoony.class, Importance.SMALL, KnowRequirement.ONE),
+	BIND(3, 4, true, "bind", HandlerRitualBind.class, Importance.SMALL, KnowRequirement.ONE),
+	STORMY(4, 3, "stormy", HandlerRitualStormy.class, Importance.MEDIUM, KnowRequirement.TWO);
 
 	public static final RitualHandler HANDLER = new RitualHandler();
 
@@ -23,11 +28,11 @@ public enum EnumRituals {
 	private Importance impor;
 	private KnowRequirement know;
 	private boolean god;
-	private Class<? extends HandlerRitualBase> handler;
+	private Class<? extends HandlerRitual> handler;
 
-	private EnumRituals(int id, int complex, String ref, Class<? extends HandlerRitualBase> clazz, Importance impor, KnowRequirement know) {
+	private EnumRituals(int id, int complex, String ref, Class<? extends HandlerRitual> clazz, Importance impor, KnowRequirement know) {
 		this.id = (byte) id;
-		complexity = (byte) (complex <= 8 ? complex : 8);
+		complexity = (byte) complex;
 		reference = ref;
 		handler = clazz;
 		this.impor = impor;
@@ -35,9 +40,9 @@ public enum EnumRituals {
 		god = false;
 	}
 
-	private EnumRituals(int id, int complex, boolean god, String ref, Class<? extends HandlerRitualBase> clazz, Importance impor, KnowRequirement know) {
+	private EnumRituals(int id, int complex, boolean god, String ref, Class<? extends HandlerRitual> clazz, Importance impor, KnowRequirement know) {
 		this.id = (byte) id;
-		complexity = (byte) (complex <= 8 ? complex : 8);
+		complexity = (byte) complex;
 		this.god = god;
 		reference = ref;
 		handler = clazz;
@@ -78,8 +83,8 @@ public enum EnumRituals {
 	public void execute(BlockPos pos, EntityPlayer player) {
 		HANDLER.execute(id, pos, player);
 	}
-	
-	public Class<? extends HandlerRitualBase> getHandler() {
+
+	public Class<? extends HandlerRitual> getHandler() {
 		return handler;
 	}
 
@@ -129,10 +134,25 @@ public enum EnumRituals {
 	}
 
 	public enum KnowRequirement {
-		NONE,
-		ONE,
-		TWO,
-		THREE;
+		NONE(-1),
+		ONE(0),
+		TWO(1),
+		THREE(2);
+		
+		private byte value;
+		
+		private KnowRequirement(int i) {
+			value = (byte) i;
+		}
+		
+		public byte getValue() {
+			return value;
+		}
+
+		public boolean canPlayerCast(EntityPlayer player) {
+			if (this == KnowRequirement.NONE) return true;
+			return EldritchPlayerData.get(player).hasKnowledge(value);
+		}
 	}
 
 }

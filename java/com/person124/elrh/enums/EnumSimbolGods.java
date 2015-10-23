@@ -9,20 +9,23 @@ import com.person124.elrh.ElrhItems;
 
 public enum EnumSimbolGods implements IStringSerializable {
 
-	DAMIEN(0, "damien", EnumSimbolType.CORNERS.getChar() + "" + EnumSimbolType.HORI.getChar() + " ", " " + EnumSimbolType.VERT.getChar() + " ", " " + EnumSimbolType.HORI.getChar() + " "),
-	THORN(1, "thorn", EnumSimbolType.BI_VERT.getChar() + "" + EnumSimbolType.BI_HORI.getChar(), EnumSimbolType.BI_HORI.getChar() + "" + EnumSimbolType.BI_VERT.getChar()),
-	RISK(2, "risk", " " + EnumSimbolType.TRI.getChar() + " ", EnumSimbolType.VERT.getChar() + "" + EnumSimbolType.TWO.getChar() + "" + EnumSimbolType.VERT.getChar(), " " + EnumSimbolType.THREE.getChar() + " "),
-	ENOON(3, "enoon", " " + EnumSimbolType.U.getChar() + " ", EnumSimbolType.BI_HORI.getChar() + "" + EnumSimbolType.BI_VERT.getChar() + "" + EnumSimbolType.BI_HORI.getChar(), " " + EnumSimbolType.N.getChar() + " ");
+	DAMIEN(0, "damien", 1, 3, EnumSimbolType.CORNERS.getChar() + "" + EnumSimbolType.HORI.getChar() + " ", " " + EnumSimbolType.VERT.getChar() + " ", " " + EnumSimbolType.HORI.getChar() + " "),
+	THORN(1, "thorn", 0, 2, EnumSimbolType.BI_VERT.getChar() + "" + EnumSimbolType.BI_HORI.getChar(), EnumSimbolType.BI_HORI.getChar() + "" + EnumSimbolType.BI_VERT.getChar()),
+	RISK(2, "risk", 3, 2, " " + EnumSimbolType.TRI.getChar() + " ", EnumSimbolType.VERT.getChar() + "" + EnumSimbolType.TWO.getChar() + "" + EnumSimbolType.VERT.getChar(), " " + EnumSimbolType.THREE.getChar() + " "),
+	ENOON(3, "enoon", 2, 0, " " + EnumSimbolType.U.getChar() + " ", EnumSimbolType.BI_HORI.getChar() + "" + EnumSimbolType.BI_VERT.getChar() + "" + EnumSimbolType.BI_HORI.getChar(), " " + EnumSimbolType.N.getChar() + " ");
 
 	private static final EnumSimbolGods[] DMG_LOOKUP = new EnumSimbolGods[values().length];
 
 	private final int DAMAGE;
 	private final String UNLOC_NAME;
 	private final String[] CRAFTING;
+	private final int ALLY, ENEMY;
 
-	private EnumSimbolGods(int damage, String unloc, String... craft) {
+	private EnumSimbolGods(int damage, String unloc, int ally, int enemy, String... craft) {
 		DAMAGE = damage;
 		UNLOC_NAME = unloc;
+		ALLY = ally;
+		ENEMY = enemy;
 		CRAFTING = craft;
 	}
 
@@ -57,6 +60,18 @@ public enum EnumSimbolGods implements IStringSerializable {
 		}
 
 		return objs;
+	}
+	
+	public boolean isEnemy(int compare) {
+		return ENEMY == compare;
+	}
+	
+	public boolean isAlly(int compare) {
+		return ALLY == compare;
+	}
+	
+	public boolean isNeutral(int compare) {
+		return ENEMY != compare && ALLY != compare;
 	}
 
 	public int getDamage() {

@@ -7,16 +7,16 @@ import com.person124.elrh.enums.EnumRituals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 
-public class HandlerRitualKnowledge extends HandlerRitualBase {
+public class HandlerRitualKnowledge extends HandlerRitual {
 
 	public HandlerRitualKnowledge() {
 		super(EnumRituals.KNOWLEDGE.getId());
 	}
 	
-	public boolean execute(BlockPos pos, EntityPlayer player) {
-		if (player.inventory.hasItem(ElrhItems.BOOK_OF_KNOWLEDGE) && !EldritchPlayerData.get(player).hasBasicKnowledge()) {
+	public boolean go(BlockPos pos, EntityPlayer player) {
+		if (player.inventory.hasItem(ElrhItems.BOOK_OF_KNOWLEDGE) && !EldritchPlayerData.get(player).hasKnowledge(EnumRituals.KnowRequirement.ONE.getValue())) {
 			EldritchPlayerData p = EldritchPlayerData.get(player);
-			p.setHasBasicKnowledge(true);
+			p.setKnowledge(EnumRituals.KnowRequirement.ONE.getValue(), true);
 			p.syncAll();
 			return true;
 		}

@@ -5,8 +5,8 @@ import net.minecraft.util.DamageSource;
 
 public class EldritchPotionBleed extends EldritchPotionBase {
 	
-	public EldritchPotionBleed() {
-		super(EldritchPotions.BASE + 0, "bleed", true, 0xff0000);
+	public EldritchPotionBleed(int id) {
+		super(id, "bleed", true, 0xff0000);
 		setTextureIndex(0, 0);
 	}
 	

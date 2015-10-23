@@ -39,8 +39,10 @@ public class EldritchBlockRitualCenter extends EldritchBlockRitualBorder {
 							Block b = world.getBlockState(p).getBlock();
 
 							if (b != Blocks.air && (b.getDefaultState().getBlock() == ElrhBlocks.RITUAL_SIMBOL || b == ElrhBlocks.RITUAL_SIMBOL_GOD)) {
-								int damage = b.getDamageValue(world, p);
-								s += EnumSimbolType.byDamage(damage).getChar();
+								if (b.getDefaultState().getBlock() == ElrhBlocks.RITUAL_SIMBOL) {
+									int damage = b.getDamageValue(world, p);
+									s += EnumSimbolType.byDamage(damage).getChar();
+								} else s += '!';
 							} else s += '-';
 						}
 					}

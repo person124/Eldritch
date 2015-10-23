@@ -37,6 +37,10 @@ book.rituals.moony=The Moon Requisition
 book.rituals.moony.1=Such that there is a sun controller, there is a moon controller. Ask it's assistance to clear the skies and call forth the moon.
 book.rituals.moony.2=One more thing the controller requests is a bottle of undead blood.
 book.rituals.moony.success=The moon controller accepts your offering.
+#Bind
+book.rituals.bind=The Binding Oath
+book.rituals.bind.1=Bind your soul to an Ancient One.
+book.rituals.bind.success=Life... Is... Fleeting...
 
 book.lore.damien.name=Damien's Lore
 book.lore.thorn.name=Thorn's Lore

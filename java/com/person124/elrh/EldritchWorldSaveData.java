@@ -10,7 +10,7 @@ import com.person124.elrh.enums.EnumRituals;
 
 public class EldritchWorldSaveData extends WorldSavedData {
 
-	public static final byte VERSION = 6;
+	public static final byte VERSION = 8;
 
 	private byte version;
 	private HashMap<Byte, String> recipes;
@@ -54,7 +54,7 @@ public class EldritchWorldSaveData extends WorldSavedData {
 	}
 
 	public void writeToNBT(NBTTagCompound nbt) {
-		nbt.setInteger("version", version);
+		nbt.setByte("version", version);
 
 		for (byte b : recipes.keySet()) {
 			if (recipes.get(b) != null) nbt.setString(EnumRituals.getById(b).getReference(), recipes.get(b));

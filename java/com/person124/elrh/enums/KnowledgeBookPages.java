@@ -1,6 +1,7 @@
 package com.person124.elrh.enums;
 
 import com.person124.elrh.EldritchPlayerData;
+import com.person124.elrh.enums.EnumRituals.KnowRequirement;
 
 public class KnowledgeBookPages {
 
@@ -10,7 +11,7 @@ public class KnowledgeBookPages {
 	static {
 		pages = new Page[PAGE_COUNT];
 
-		pages[0] = new Page(EnumRituals.KNOWLEDGE, null, EnumRituals.SUNNY, EnumRituals.MOONY);
+		pages[0] = new Page(EnumRituals.KNOWLEDGE, null, EnumRituals.SUNNY, EnumRituals.MOONY, EnumRituals.BIND, null, EnumRituals.STORMY);
 	}
 
 	public static Page getPage(int i) {
@@ -40,14 +41,8 @@ public class KnowledgeBookPages {
 
 	public static boolean hasEnoughKnowledge(int page, int line, EldritchPlayerData data) {
 		EnumRituals.KnowRequirement know = needsKnowledge(page, line);
-		switch (know) {
-			case NONE:
-				return true;
-			case ONE:
-				return data.hasBasicKnowledge();
-			default:
-				return false;
-		}
+		if (know == KnowRequirement.NONE) return true;
+		return data.hasKnowledge(know.getValue());
 	}
 
 	private static class Page {
